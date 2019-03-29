@@ -20,6 +20,7 @@ public class CardTexture : MonoBehaviour
 	public void SetTexture(string name){
 		var ren = gameObject.GetComponent<Renderer>();
 		Texture t = Resources.Load("cardface/" + name) as Texture; 
-		ren.material.mainTexture = t; 
+		ren.material.mainTexture = t;
+        Debug.Log("cardface/" + name);
 	}
 }
