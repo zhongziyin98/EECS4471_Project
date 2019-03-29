@@ -9,7 +9,7 @@ public class ExitGame : MonoBehaviour
         Application.Quit();
     }
 
-
+    
 
 
     // Start is called before the first frame update
