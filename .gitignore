@@ -34,3 +34,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+cgi/Assets/Scenes/Scripts.meta
+cgi/Assets/Scenes/SampleScene.unity
