@@ -21,6 +21,12 @@ public class PinchGesture : GestureBase
     {
         if(DetectionManager.Get().IsHandSet(m_Hand))
         {
+            if (DetectionManager.Get().GetHand(m_Hand).IsPinching())
+            {
+
+
+
+            }
             return DetectionManager.Get().GetHand(m_Hand).IsPinching();
         }
 
