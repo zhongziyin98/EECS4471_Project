@@ -5,8 +5,6 @@ using UnityEngine;
 public class DeckBehavior : MonoBehaviour
 {
 
-    public GameObject cardsInHand = new GameObject[60]; // max hand size 60
-    public string cardsInDeck = new string[60]; // deck size; stores names of cards
     public ArrayList cardsInHand = new ArrayList(); // max hand size 60
     public ArrayList cardsInDeck = new ArrayList(); // deck size; stores names of cards
 
