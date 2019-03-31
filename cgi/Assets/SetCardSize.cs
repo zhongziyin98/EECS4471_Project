@@ -22,7 +22,8 @@ public class SetCardSize : MonoBehaviour
 
     public void SetAllCardsSize(float v) {
         foreach (GameObject cc in GameObject.FindGameObjectsWithTag("Card")) {
-            cc.transform.localScale = new Vector3(v * 0.654356f, v * 0.0033f, v * 1.0f);
+            CardBehavior cb = cc.GetComponent<CardBehavior>();
+            cb.SetDDisplay(v); 
         }
     }
 
