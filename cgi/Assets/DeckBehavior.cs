@@ -21,7 +21,7 @@ public class DeckBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //RenderCardPosition();
+        //RenderCardPosition(); 
     }
 
 

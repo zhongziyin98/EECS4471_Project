@@ -10,8 +10,6 @@ public class CardBehavior : MonoBehaviour
     public float displayed; // The scale of card; value between 0f and 1f; 
     public Hand attachedTo;
 
-    public float timer; //the moving procedure from deck to hand; 
-
 
 
     // Start is called before the first frame update
@@ -19,7 +17,6 @@ public class CardBehavior : MonoBehaviour
     {
         inHand = false;
         displayed = 1.0f;
-        timer = 0f;
 
         SetTexture("1S");
         SetRotation(new Vector3(-90, 0, 0));
@@ -28,9 +25,25 @@ public class CardBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // smooth transition between open hand and close hand
+        if (inHand)
+        {
+            // need to determine hand open or not
+            // opened
+            displayed += 0.03f;
+            //else
+            //displayed -= 0.03f;
+        }
+        else {
+            displayed = 1.0f;
+        }
+        Mathf.Clamp(displayed, 0.0f, 1.0f); // range control
+
         transform.localScale = new Vector3(displayed*0.654356f, displayed*0.0033f, displayed*1.0f);
 
-        timer += Time.deltaTime;
+
+        // card position in hand is written in DeckBehvior
+        
 
 
     }
