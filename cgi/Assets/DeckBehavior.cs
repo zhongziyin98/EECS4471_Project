@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Leap;
+using Leap.Unity;
 
 public class DeckBehavior : MonoBehaviour
 {
@@ -21,12 +23,13 @@ public class DeckBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //RenderCardPosition(); 
+        RenderCardPosition(); 
     }
 
 
     public void DrawCard()
     {
+        // generate a card at deck positoin
         CardBehavior go = Instantiate(card, new Vector3(3.0f, 1.1f, -3.0f), Quaternion.identity);
         //string s = cardsInDeck.RemoveAt(cardsInDeck.Count - 1);
         go.SetTexture("1D");
@@ -40,7 +43,13 @@ public class DeckBehavior : MonoBehaviour
 
         for (int i = 0; i < n; i++)
         {
-           // GameObject go = (GameObject) cardsInHand[i];
+            CardBehavior go = (CardBehavior) cardsInHand[i];
+
+            Vector3 oldPos = go.gameObject.transform.position;
+
+            Hand h = go.attachedTo; 
+            //Vector3 hp = h.PalmPosition.ToVector3();
+            
 
         }
     }

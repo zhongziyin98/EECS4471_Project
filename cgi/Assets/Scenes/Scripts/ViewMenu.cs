@@ -25,10 +25,10 @@ public class ViewMenu : MonoBehaviour
 
         foreach (Hand hand in frame.Hands)
         {
-            if (hand.IsRight)
+            if (hand.IsLeft)
             {
                 vector = hand.PalmPosition.ToVector3();
-                vector.y += 0.25f;
+                vector.y += 0.5f;
                 transform.position = vector;
                 //Debug.Log(vector.ToString());
             }

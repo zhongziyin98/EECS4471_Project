@@ -30,9 +30,9 @@ public class CardBehavior : MonoBehaviour
         {
             // need to determine hand open or not
             // opened
-            displayed += 0.03f;
+            displayed += 1.0f*Time.deltaTime;
             //else
-            //displayed -= 0.03f;
+            //displayed -= 1.0f*Time.deltaTime;
         }
         else {
             displayed = 1.0f;
