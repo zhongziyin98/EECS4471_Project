@@ -18,7 +18,7 @@ public class CardBehavior : MonoBehaviour
 
         displayed = 1.0f;
 
-        SetTexture("gray_back"); // default texture
+        //SetTexture("gray_back"); // default texture
         SetRotation(new Vector3(-90, 0, 0));
     }
 
