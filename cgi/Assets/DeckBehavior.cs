@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DeckBehavior : MonoBehaviour
 {
-    public CardTexture card;
+    public CardBehavior card;
 
 
     public ArrayList cardsInHand = new ArrayList(); // max hand size 60
@@ -27,9 +27,10 @@ public class DeckBehavior : MonoBehaviour
 
     public void DrawCard()
     {
-        CardTexture go = Instantiate(card, new Vector3(1, 2, 0), Quaternion.identity);
+        CardBehavior go = Instantiate(card, new Vector3(3.0f, 1.1f, -3.0f), Quaternion.identity);
         //string s = cardsInDeck.RemoveAt(cardsInDeck.Count - 1);
         go.SetTexture("1D");
+        
         cardsInHand.Add(go);
     }
 

@@ -20,6 +20,9 @@ public class CardBehavior : MonoBehaviour
         inHand = false;
         displayed = 1.0f;
         timer = 0f;
+
+        SetTexture("1S");
+        SetRotation(new Vector3(-90, 0, 0));
     }
 
     // Update is called once per frame
@@ -29,6 +32,20 @@ public class CardBehavior : MonoBehaviour
 
         timer += Time.deltaTime;
 
+
+    }
+
+    public void SetTexture(string name)
+    {
+        var ren = gameObject.GetComponent<Renderer>();
+        Texture t = Resources.Load("cardface/" + name) as Texture;
+        ren.material.mainTexture = t;
+        Debug.Log("cardface/" + name);
+    }
+
+    public void SetRotation(Vector3 rot)
+    {
+        transform.eulerAngles = rot;
 
     }
 }
