@@ -7,7 +7,8 @@ using Leap.Unity;
 public class CardBehavior : MonoBehaviour
 {
     public bool inHand = false; 
-    public float displayed; // The scale of card; value between 0f and 1f; 
+    //public float displayed; // The scale of card; value between 0f and 1f; 
+    //public float ddisplay = 2.0f; 
 
     LeapProvider provider;
 
@@ -16,7 +17,7 @@ public class CardBehavior : MonoBehaviour
     {
         provider = FindObjectOfType<LeapProvider>() as LeapProvider;
 
-        displayed = 1.0f;
+        //displayed = 1.0f;
 
         //SetTexture("gray_back"); // default texture
         SetRotation(new Vector3(-90, 0, 0));
@@ -26,25 +27,40 @@ public class CardBehavior : MonoBehaviour
     void Update()
     {
         // smooth transition between open hand and close hand
+        //displayed += ddisplay * Time.deltaTime;
         if (inHand)
         {
 
-            GetComponent<Rigidbody>().isKinematic = true; 
+            GetComponent<Rigidbody>().isKinematic = true;
         }
-        else {
-            displayed = 1.0f;
+        else
+        {
+            //displayed = 1.0f;
             GetComponent<Rigidbody>().isKinematic = false;
         }
-        Mathf.Clamp(displayed, 0.0f, 1.0f); // range control
 
-        transform.localScale = new Vector3(displayed*0.654356f, displayed*0.0033f, displayed*1.0f);
+        //displayed = Mathf.Max(0.0f, Mathf.Min(1.0f, displayed)); // range control
+
+        //transform.localScale = new Vector3(displayed * 0.654356f, displayed * 0.0033f, displayed * 1.0f);
 
 
         // card rel position in hand is written in DeckBehvior
-        
 
 
+        Frame frame = provider.CurrentFrame;
+
+        foreach (Hand hand in frame.Hands)
+        {
+            if (hand.IsLeft)
+            {
+
+            }
+        }
     }
+    /*
+    public void SetDDisplay(float val) {
+        ddisplay = val; 
+    }*/
 
     public void SetTexture(string name)
     {

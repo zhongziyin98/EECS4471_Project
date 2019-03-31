@@ -84,12 +84,14 @@ public class DeckBehavior : MonoBehaviour
 
                     h = hand;
                     Vector3 hp = h.PalmPosition.ToVector3();
-                    hp.y += 1.5f;
+                    hp.y += 1.0f;
                     hp.x += xOffset; 
 
                     go.gameObject.transform.position = oldPos * 0.5f + hp * 0.5f;
 
                     go.gameObject.transform.eulerAngles = new Vector3(-90, 0, 0);
+
+
                 }
             }
             
