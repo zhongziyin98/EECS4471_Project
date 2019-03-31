@@ -32,10 +32,15 @@ public class DeckBehavior : MonoBehaviour
 
     public void DrawCard()
     {
+        int n = cardsInDeck.Count;
+        if (n <= 0) {
+            return; 
+        }
         // generate a card at deck positoin
         CardBehavior go = Instantiate(card, new Vector3(3.0f, 1.1f, -3.0f), Quaternion.identity);
-        //string s = cardsInDeck.RemoveAt(cardsInDeck.Count - 1);
-        go.SetTexture("1D");
+        string s = cardsInDeck[n-1]; // get and remove a card
+        cardsInDeck.RemoveAt(n - 1); 
+        go.SetTexture(s);
         
         cardsInHand.Add(go);
 

@@ -18,7 +18,7 @@ public class CardBehavior : MonoBehaviour
 
         displayed = 1.0f;
 
-        SetTexture("1S");
+        SetTexture("gray_back"); // default texture
         SetRotation(new Vector3(-90, 0, 0));
     }
 
@@ -48,7 +48,7 @@ public class CardBehavior : MonoBehaviour
 
     public void SetTexture(string name)
     {
-        var ren = gameObject.GetComponent<Renderer>();
+        Renderer ren = gameObject.GetComponent<Renderer>();
         Texture t = Resources.Load("cardface/" + name) as Texture;
         ren.material.mainTexture = t;
         Debug.Log("cardface/" + name);
