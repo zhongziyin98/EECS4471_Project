@@ -8,13 +8,16 @@ public class DeckBehavior : MonoBehaviour
 {
     public CardBehavior card;
 
+    LeapProvider provider;
 
-    public ArrayList cardsInHand = new ArrayList(); // max hand size 60
-    public List<string> cardsInDeck = new List<string>(); // deck size; stores names of cards
+    public ArrayList cardsInHand = new ArrayList(); // all cards in hand; 
+    public List<string> cardsInDeck = new List<string>(); // all cards in deck; stores names of cards
 
     // Start is called before the first frame update
     void Start()
     {
+        provider = FindObjectOfType<LeapProvider>() as LeapProvider;
+
         InitiateDeck();
 
         DrawCard();
@@ -35,6 +38,20 @@ public class DeckBehavior : MonoBehaviour
         go.SetTexture("1D");
         
         cardsInHand.Add(go);
+
+        go.inHand = true;
+
+        //Frame frame = provider.CurrentFrame;
+        /*
+        foreach (Hand hand in frame.Hands)
+        {
+            if (hand.IsLeft)
+            {
+                go.attachedTo = hand; 
+            }
+
+        }
+        */
     }
 
     public void RenderCardPosition()
@@ -45,11 +62,33 @@ public class DeckBehavior : MonoBehaviour
         {
             CardBehavior go = (CardBehavior) cardsInHand[i];
 
-            Vector3 oldPos = go.gameObject.transform.position;
+            float xOffset = -0.5f * (n-1.0f) + i; 
 
-            Hand h = go.attachedTo; 
-            //Vector3 hp = h.PalmPosition.ToVector3();
+            //Vector3 oldPos = go.gameObject.transform.position;
+
+            Hand h; 
+            //Hand h = go.attachedTo;
+            Frame frame = provider.CurrentFrame;
+
+            foreach (Hand hand in frame.Hands)
+            {
+                if (hand.IsLeft)
+                {
+
+                    Vector3 oldPos = go.gameObject.transform.position;
+
+                    h = hand;
+                    Vector3 hp = h.PalmPosition.ToVector3();
+                    hp.y += 1.5f;
+                    hp.x += xOffset; 
+
+                    go.gameObject.transform.position = oldPos * 0.5f + hp * 0.5f;
+
+                    go.gameObject.transform.eulerAngles = new Vector3(-90, 0, 0);
+                }
+            }
             
+
 
         }
     }

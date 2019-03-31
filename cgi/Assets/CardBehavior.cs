@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Leap;
+using Leap.Unity;
 
 public class CardBehavior : MonoBehaviour
 {
-
-    public bool inHand; // is the card in hand? 
+    public bool inHand = false; 
     public float displayed; // The scale of card; value between 0f and 1f; 
-    public Hand attachedTo;
 
-
+    LeapProvider provider;
 
     // Start is called before the first frame update
     void Start()
     {
-        inHand = false;
+        provider = FindObjectOfType<LeapProvider>() as LeapProvider;
+
         displayed = 1.0f;
 
         SetTexture("1S");
@@ -28,21 +28,19 @@ public class CardBehavior : MonoBehaviour
         // smooth transition between open hand and close hand
         if (inHand)
         {
-            // need to determine hand open or not
-            // opened
-            displayed += 1.0f*Time.deltaTime;
-            //else
-            //displayed -= 1.0f*Time.deltaTime;
+
+            GetComponent<Rigidbody>().isKinematic = true; 
         }
         else {
             displayed = 1.0f;
+            GetComponent<Rigidbody>().isKinematic = false;
         }
         Mathf.Clamp(displayed, 0.0f, 1.0f); // range control
 
         transform.localScale = new Vector3(displayed*0.654356f, displayed*0.0033f, displayed*1.0f);
 
 
-        // card position in hand is written in DeckBehvior
+        // card rel position in hand is written in DeckBehvior
         
 
 
