@@ -68,7 +68,7 @@ public class DeckBehavior : MonoBehaviour
         {
             CardBehavior go = (CardBehavior) cardsInHand[i];
 
-            float xOffset = -0.5f * (n-1.0f) + i; 
+            float xOffset = -0.05f * (n-0.05f) + 0.1f*i; 
 
             //Vector3 oldPos = go.gameObject.transform.position;
 
@@ -85,7 +85,7 @@ public class DeckBehavior : MonoBehaviour
 
                     h = hand;
                     Vector3 hp = h.PalmPosition.ToVector3();
-                    hp.y += 1.0f;
+                    hp.y += 0.1f;
                     hp.x += xOffset; 
 
                     go.gameObject.transform.position = oldPos * 0.5f + hp * 0.5f;
