@@ -1531,6 +1531,7 @@ GameObject:
   - component: {fileID: 1048130249}
   - component: {fileID: 1048130248}
   - component: {fileID: 1048130247}
+  - component: {fileID: 1048130250}
   m_Layer: 0
   m_Name: Pinch
   m_TagString: Untagged
@@ -1545,7 +1546,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1048130246}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e6596b8013625d47936f565ca8b8fe1, type: 3}
   m_Name: 
@@ -1593,6 +1594,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1048130250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048130246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f1f61f0e0579af4b8520a087eb5a593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Debug: 0
+  m_Hand: 0
+  parentObject: {fileID: 0}
+  testObject: {fileID: 0}
 --- !u!1 &1090814327
 GameObject:
   m_ObjectHideFlags: 0
