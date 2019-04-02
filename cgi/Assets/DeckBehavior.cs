@@ -37,7 +37,8 @@ public class DeckBehavior : MonoBehaviour
             return; 
         }
         // generate a card at deck positoin
-        CardBehavior go = Instantiate(card, new Vector3(3.0f, 1.1f, -3.0f), Quaternion.identity);
+        Vector3 pos = new Vector3(0.3f, 0.11f, -2.9f);
+        CardBehavior go = Instantiate(card, pos, Quaternion.identity);
         string s = cardsInDeck[n-1]; // get and remove a card
         cardsInDeck.RemoveAt(n - 1); 
         go.SetTexture(s);

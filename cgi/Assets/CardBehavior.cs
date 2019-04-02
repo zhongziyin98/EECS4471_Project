@@ -41,7 +41,7 @@ public class CardBehavior : MonoBehaviour
 
         displayed = Mathf.Max(0.0f, Mathf.Min(1.0f, displayed)); // range control
 
-        transform.localScale = new Vector3(displayed * 0.654356f, displayed * 0.0033f, displayed * 1.0f);
+        transform.localScale = new Vector3(displayed * 0.0654356f, displayed * 0.00033f, displayed * 0.1f);
 
 
         // card rel position in hand is written in DeckBehvior
