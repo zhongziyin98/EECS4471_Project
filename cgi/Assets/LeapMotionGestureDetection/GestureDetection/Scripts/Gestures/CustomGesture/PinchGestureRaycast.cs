@@ -9,16 +9,16 @@ public class PinchGestureRaycast : GestureBase
     DetectionManager.DetectionHand m_DetectHand;
     public GameObject parentObject;
     public GameObject testObject;
+    Vector3 vector;
 
     void Start()
     {
-        parentObject = GameObject.Find("LoPoly Rigged Hand Right");
-        testObject = GameObject.Find("Cube");
+        testObject = GameObject.Find("Card");
     }
 
     void Update()
     {
-
+        parentObject = GameObject.Find("R_Palm");
     }
 
     public override bool Detected()
@@ -47,6 +47,10 @@ public class PinchGestureRaycast : GestureBase
                         Debug.Log("YEET");
                         //hit.collider.gameObject.transform.parent = parentObject.transform;
                         testObject.transform.parent = parentObject.transform;
+                        vector = parentObject.transform.position;
+                        vector.z += 0.25f;
+                        testObject.transform.position = vector;
+                        //testObject.transform.position = parentObject.transform.position + translateVector;
                         //hit.collider.gameObject.GetComponent<Rigidbody>().useGravity = false;
                     }
                 }
