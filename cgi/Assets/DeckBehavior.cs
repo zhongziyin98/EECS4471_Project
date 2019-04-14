@@ -88,10 +88,9 @@ public class DeckBehavior : MonoBehaviour
                     hp.y += 0.1f;
                     hp.x += xOffset; 
 
-                    go.gameObject.transform.position = oldPos * 0.5f + hp * 0.5f;
+                    go.gameObject.transform.position = oldPos * 0.76f + hp * 0.24f;
 
                     go.gameObject.transform.eulerAngles = new Vector3(-90, 0, 0);
-
 
                 }
             }
@@ -100,6 +99,16 @@ public class DeckBehavior : MonoBehaviour
 
         }
     }
+
+    public void HandToPinch(GameObject cc) {
+        CardBehavior cb = cc.GetComponent<CardBehavior>();
+        cb.inHand = false;
+        cb.pinched = true;
+
+        cardsInHand.Remove(cb);
+
+    }
+
 
     public void InitiateDeck()
     {

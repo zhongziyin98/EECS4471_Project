@@ -2238,6 +2238,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card
       objectReference: {fileID: 0}
+    - target: {fileID: 1188934383290331400, guid: a647888cf604ce941b84cce991aa0a58,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1188934383290331441, guid: a647888cf604ce941b84cce991aa0a58,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2352,12 +2357,34 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   OnGestureEnd:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1048130250}
+        m_MethodName: onGestureEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnGestureStay:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1048130250}
+        m_MethodName: onGestureStay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!4 &1048130249
@@ -2389,7 +2416,8 @@ MonoBehaviour:
   m_Debug: 0
   m_Hand: 0
   parentObject: {fileID: 0}
-  testObject: {fileID: 0}
+  deck: {fileID: 907058757}
+  pinching: {fileID: 0}
 --- !u!1 &1090814327
 GameObject:
   m_ObjectHideFlags: 0
@@ -4165,7 +4193,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 2
+          m_FloatArgument: 4
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -4181,7 +4209,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: -2
+          m_FloatArgument: -4
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -4321,6 +4349,116 @@ PrefabInstance:
       propertyPath: m_Name
       value: Attachment Hands
       objectReference: {fileID: 0}
+    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: indexTip
+      value: 
+      objectReference: {fileID: 1481111246}
+    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: indexDistalJoint
+      value: 
+      objectReference: {fileID: 1104194817}
+    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: indexMiddleJoint
+      value: 
+      objectReference: {fileID: 596180953}
+    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: indexKnuckle
+      value: 
+      objectReference: {fileID: 1460746849}
+    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: thumbTip
+      value: 
+      objectReference: {fileID: 51331526}
+    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: thumbDistalJoint
+      value: 
+      objectReference: {fileID: 1985437292}
+    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: thumbProximalJoint
+      value: 
+      objectReference: {fileID: 765798437}
+    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: middleKnuckle
+      value: 
+      objectReference: {fileID: 1406784118}
+    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: middleMiddleJoint
+      value: 
+      objectReference: {fileID: 620436734}
+    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: middleDistalJoint
+      value: 
+      objectReference: {fileID: 668203767}
+    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: middleTip
+      value: 
+      objectReference: {fileID: 387661787}
+    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: indexTip
+      value: 
+      objectReference: {fileID: 170389989}
+    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: indexDistalJoint
+      value: 
+      objectReference: {fileID: 630479394}
+    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: indexMiddleJoint
+      value: 
+      objectReference: {fileID: 788014832}
+    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: indexKnuckle
+      value: 
+      objectReference: {fileID: 1450600282}
+    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: thumbTip
+      value: 
+      objectReference: {fileID: 149746590}
+    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: thumbDistalJoint
+      value: 
+      objectReference: {fileID: 1666431189}
+    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: thumbProximalJoint
+      value: 
+      objectReference: {fileID: 1962043310}
+    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: middleKnuckle
+      value: 
+      objectReference: {fileID: 1959844989}
+    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: middleMiddleJoint
+      value: 
+      objectReference: {fileID: 1220681281}
+    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: middleDistalJoint
+      value: 
+      objectReference: {fileID: 1768114830}
+    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
+        type: 3}
+      propertyPath: middleTip
+      value: 
+      objectReference: {fileID: 1911227699}
     - target: {fileID: 4139101302111182, guid: 80001c6c93c5068488198a82e151e3ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.021716557
@@ -4482,116 +4620,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -2.6617913
       objectReference: {fileID: 0}
-    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: indexTip
-      value: 
-      objectReference: {fileID: 170389989}
-    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: indexDistalJoint
-      value: 
-      objectReference: {fileID: 630479394}
-    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: indexMiddleJoint
-      value: 
-      objectReference: {fileID: 788014832}
-    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: indexKnuckle
-      value: 
-      objectReference: {fileID: 1450600282}
-    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: thumbTip
-      value: 
-      objectReference: {fileID: 149746590}
-    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: thumbDistalJoint
-      value: 
-      objectReference: {fileID: 1666431189}
-    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: thumbProximalJoint
-      value: 
-      objectReference: {fileID: 1962043310}
-    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: middleKnuckle
-      value: 
-      objectReference: {fileID: 1959844989}
-    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: middleMiddleJoint
-      value: 
-      objectReference: {fileID: 1220681281}
-    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: middleDistalJoint
-      value: 
-      objectReference: {fileID: 1768114830}
-    - target: {fileID: 114807355752014248, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: middleTip
-      value: 
-      objectReference: {fileID: 1911227699}
-    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: indexTip
-      value: 
-      objectReference: {fileID: 1481111246}
-    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: indexDistalJoint
-      value: 
-      objectReference: {fileID: 1104194817}
-    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: indexMiddleJoint
-      value: 
-      objectReference: {fileID: 596180953}
-    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: indexKnuckle
-      value: 
-      objectReference: {fileID: 1460746849}
-    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: thumbTip
-      value: 
-      objectReference: {fileID: 51331526}
-    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: thumbDistalJoint
-      value: 
-      objectReference: {fileID: 1985437292}
-    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: thumbProximalJoint
-      value: 
-      objectReference: {fileID: 765798437}
-    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: middleKnuckle
-      value: 
-      objectReference: {fileID: 1406784118}
-    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: middleMiddleJoint
-      value: 
-      objectReference: {fileID: 620436734}
-    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: middleDistalJoint
-      value: 
-      objectReference: {fileID: 668203767}
-    - target: {fileID: 114517128394862370, guid: 80001c6c93c5068488198a82e151e3ff,
-        type: 3}
-      propertyPath: middleTip
-      value: 
-      objectReference: {fileID: 387661787}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80001c6c93c5068488198a82e151e3ff, type: 3}
 --- !u!1 &1991878524

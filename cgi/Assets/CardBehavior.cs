@@ -6,9 +6,11 @@ using Leap.Unity;
 
 public class CardBehavior : MonoBehaviour
 {
-    public bool inHand = false; 
+    public bool inHand = false; // is this card in left hand? 
+    public bool pinched = false; // is this card being pinched? 
+
     public float displayed; // The scale of card; value between 0f and 1f; 
-    public float ddisplay = 2.0f; 
+    public float ddisplay = 4.0f; 
 
     LeapProvider provider;
 
@@ -30,8 +32,11 @@ public class CardBehavior : MonoBehaviour
         displayed += ddisplay * Time.deltaTime;
         if (inHand)
         {
-
             GetComponent<Rigidbody>().isKinematic = true;
+        }
+        else if(pinched){
+            GetComponent<Rigidbody>().isKinematic = true;
+            displayed = 1.0f;
         }
         else
         {
@@ -46,7 +51,7 @@ public class CardBehavior : MonoBehaviour
 
         // card rel position in hand is written in DeckBehvior
 
-
+        /*
         Frame frame = provider.CurrentFrame;
 
         foreach (Hand hand in frame.Hands)
@@ -56,7 +61,9 @@ public class CardBehavior : MonoBehaviour
 
             }
         }
+        */
     }
+
     
     public void SetDDisplay(float val) {
         ddisplay = val; 
