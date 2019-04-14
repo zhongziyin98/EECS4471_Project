@@ -10,7 +10,9 @@ public class CardBehavior : MonoBehaviour
     public bool pinched = false; // is this card being pinched? 
 
     public float displayed; // The scale of card; value between 0f and 1f; 
-    public float ddisplay = 4.0f; 
+    public float ddisplay = 4.0f;
+
+    Shader std, hili;
 
     LeapProvider provider;
 
@@ -23,6 +25,9 @@ public class CardBehavior : MonoBehaviour
 
         //SetTexture("gray_back"); // default texture
         SetRotation(new Vector3(-90, 0, 0));
+
+        hili = Shader.Find("Objectify/Fresnel_Pulse");
+        std = Shader.Find("Standard");
     }
 
     // Update is called once per frame
@@ -51,17 +56,15 @@ public class CardBehavior : MonoBehaviour
 
         // card rel position in hand is written in DeckBehvior
 
-        /*
-        Frame frame = provider.CurrentFrame;
-
-        foreach (Hand hand in frame.Hands)
+        if (pinched)
         {
-            if (hand.IsLeft)
-            {
+            GetComponent<Renderer>().material.shader = hili;
 
-            }
         }
-        */
+        else
+        {
+            GetComponent<Renderer>().material.shader = std;
+        }
     }
 
     

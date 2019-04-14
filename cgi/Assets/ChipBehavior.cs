@@ -10,10 +10,13 @@ public class ChipBehavior : MonoBehaviour
     public GameObject handObject;
     Vector3 vector;
 
+    Shader std, hili;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        hili = Shader.Find("Objectify/Fresnel_Pulse");
+        std = Shader.Find("Standard");
     }
 
     // Update is called once per frame
@@ -24,6 +27,21 @@ public class ChipBehavior : MonoBehaviour
         handObject = GameObject.Find("R_Palm");
         vector = handObject.transform.position;
         vector.y -= 0.1f;
+
+        if (held)
+        {
+            GetComponent<Renderer>().materials[1].shader = hili;
+            GetComponent<Renderer>().materials[2].shader = hili;
+            GetComponent<Renderer>().materials[1].SetFloat("Corrective_Glow", 0);
+
+        }
+        else {
+            GetComponent<Renderer>().materials[1].shader = std;
+            GetComponent<Renderer>().materials[2].shader = std;
+        }
+
+
+
     }
     
 
