@@ -1594,7 +1594,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 558151978}
   m_Material: {fileID: 13400000, guid: f1a38fbcfb7e742ee95767859ab171db, type: 2}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.02, z: 0.0086469}
@@ -2578,7 +2578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4236705c700b96c47bfca2a7d50478b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Debug: 1
+  m_Debug: 0
   m_Hand: 0
   m_Strength: 0.255
 --- !u!114 &1154585414
@@ -3643,6 +3643,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747316314}
   m_CullTransparentMesh: 0
+--- !u!1 &1766418211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1766418214}
+  - component: {fileID: 1766418213}
+  - component: {fileID: 1766418212}
+  m_Layer: 0
+  m_Name: DoubleSwipe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1766418212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766418211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 555bfce179425c842a9d005c5d502175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Debug: 1
+  m_Hand: 0
+  m_VelocityThreshold: 1.5
+  m_CooldownTime: 0.2
+--- !u!114 &1766418213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766418211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a1b9d039ec69eb46a894b6959a59d33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnGestureStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnGestureEnd:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnGestureStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!4 &1766418214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766418211}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.14017746, y: -1.314167, z: 1.0073695}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1768114828
 GameObject:
   m_ObjectHideFlags: 0
@@ -4697,6 +4772,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedChip
       objectReference: {fileID: 0}
+    - target: {fileID: 558151979, guid: 8f34bd9c2988e554494327a7ffc1f4e1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 558151983, guid: 8f34bd9c2988e554494327a7ffc1f4e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4748,10 +4827,6 @@ PrefabInstance:
     - target: {fileID: 558151983, guid: 8f34bd9c2988e554494327a7ffc1f4e1, type: 3}
       propertyPath: m_LocalScale.y
       value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 558151979, guid: 8f34bd9c2988e554494327a7ffc1f4e1, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f34bd9c2988e554494327a7ffc1f4e1, type: 3}

@@ -23,10 +23,12 @@ public class ChipBehavior : MonoBehaviour
     void Update()
     {
         //GetComponent<Rigidbody>().isKinematic = held;
-
-        handObject = GameObject.Find("R_Palm");
-        vector = handObject.transform.position;
-        vector.y -= 0.1f;
+        if (GameObject.Find("R_Palm") != null)
+        {
+            handObject = GameObject.Find("R_Palm");
+            vector = handObject.transform.position;
+            vector.y -= 0.1f;
+        }
 
         if (held)
         {
