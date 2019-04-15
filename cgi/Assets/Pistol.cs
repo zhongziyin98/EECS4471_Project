@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pistal : GestureBase
+public class Pistol : GestureBase
 {
 
     public EHand m_Hand;
@@ -41,7 +41,9 @@ public class Pistal : GestureBase
         {
             if (detectHand.CheckWithDetails(m_GestureDetail))
             {
-                var rot = detectHand.GetVelocity();
+                var rot = detectHand.GetRotation();
+
+               // Debug.Log(rot);
 
                 m_CoolDownLeft = m_CooldownTime;
                 return true;
