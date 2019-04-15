@@ -43,7 +43,7 @@ public class Pistol : GestureBase
             {
                 var rot = detectHand.GetRotation();
 
-               // Debug.Log(rot);
+                //Debug.Log(rot);
 
                 m_CoolDownLeft = m_CooldownTime;
                 return true;
