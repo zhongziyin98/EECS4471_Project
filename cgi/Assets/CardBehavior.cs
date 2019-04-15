@@ -14,11 +14,14 @@ public class CardBehavior : MonoBehaviour
 
     Shader std, hili;
 
+    //public Vector3 _speed, lastPos; 
+
     LeapProvider provider;
 
     // Start is called before the first frame update
     void Start()
     {
+        //lastPos = Vector3.zero; 
         provider = FindObjectOfType<LeapProvider>() as LeapProvider;
 
         displayed = 1.0f;
@@ -65,6 +68,13 @@ public class CardBehavior : MonoBehaviour
         {
             GetComponent<Renderer>().material.shader = std;
         }
+        /*
+        if (lastPos == Vector3.zero) {
+            lastPos = transform.position;
+        }
+        //_speed = (transform.position - lastPos)/Time.deltaTime;
+        //Debug.Log(_speed.ToString("F3")); 
+        */
     }
 
     

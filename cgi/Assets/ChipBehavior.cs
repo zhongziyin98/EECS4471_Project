@@ -39,7 +39,7 @@ public class ChipBehavior : MonoBehaviour
         }
         else {
             GetComponent<Renderer>().materials[1].shader = std;
-            GetComponent<Renderer>().materials[2].shader = std;
+            //GetComponent<Renderer>().materials[2].shader = std;
         }
 
 

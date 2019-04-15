@@ -35,6 +35,13 @@ public class PinchGestureRaycast : GestureBase
         CardBehavior cb = pinching.GetComponent<CardBehavior>();
         cb.pinched = false;
 
+        DetectionManager.DetectionHand rightHand = DetectionManager.Get().GetHand(EHand.eRightHand);
+
+        //pinching.GetComponent<Rigidbody>().velocity = rightHand.GetFinger(EFinger.eIndex).GetTipVelocity();
+        pinching.GetComponent<Rigidbody>().velocity = rightHand.GetVelocity();
+        Debug.Log(rightHand.GetVelocity().ToString());
+        //Debug.Log(rightHand.GetFinger(EFinger.eThumb+1).GetTipVelocity().ToString());
+
         pinching.transform.parent = null; 
         pinching = null; 
 
@@ -56,7 +63,7 @@ public class PinchGestureRaycast : GestureBase
                 RaycastHit hit;
 
                 // Draw ray
-                Debug.DrawRay(m_DetectHand.GetFinger(finger).GetTipPosition(), m_DetectHand.GetFinger(finger).GetFingerDirection() * 1000, Color.white);
+                Debug.DrawRay(m_DetectHand.GetFinger(finger).GetTipPosition(), m_DetectHand.GetFinger(finger).GetFingerDirection() * 0.03f, Color.white);
 
                 if (pinching != null)
                 {
@@ -66,7 +73,7 @@ public class PinchGestureRaycast : GestureBase
                 // Draw ray for palm instead
                 //Debug.DrawRay(DetectionManager.Get().GetHand(m_Hand).GetHandPosition(), transform.TransformDirection(Vector3.forward) * 1000, Color.white);
 
-                if (Physics.Raycast(m_DetectHand.GetFinger(finger).GetTipPosition(), m_DetectHand.GetFinger(finger).GetFingerDirection(), out hit))
+                if (Physics.Raycast(m_DetectHand.GetFinger(finger).GetTipPosition(), m_DetectHand.GetFinger(finger).GetFingerDirection(), out hit, 0.03f)) // need a length limit on raycast
                 {
                     if (hit.collider.tag == "Card")
                     {
