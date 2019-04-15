@@ -9,7 +9,7 @@ public class CardBehavior : MonoBehaviour
     public bool inHand = false; // is this card in left hand? 
     public bool pinched = false; // is this card being pinched? 
 
-    public float displayed; // The scale of card; value between 0f and 1f; 
+    public float displayed, targetSize; // The scale of card; value between 0f and 1f; 
     public float ddisplay = 4.0f;
 
     Shader std, hili;
@@ -40,6 +40,17 @@ public class CardBehavior : MonoBehaviour
         displayed += ddisplay * Time.deltaTime;
         if (inHand)
         {
+            float diff = targetSize - displayed;
+            if (Mathf.Abs(diff) <= (ddisplay * Time.deltaTime))
+            {
+                displayed = targetSize;
+            }
+            else
+            {
+                displayed += (Mathf.Sign(diff) * ddisplay * Time.deltaTime);
+            }
+
+
             GetComponent<Rigidbody>().isKinematic = true;
         }
         else if(pinched){
@@ -53,6 +64,7 @@ public class CardBehavior : MonoBehaviour
         }
 
         displayed = Mathf.Max(0.0f, Mathf.Min(1.0f, displayed)); // range control
+
 
         transform.localScale = new Vector3(displayed * 0.0654356f, displayed * 0.00033f, displayed * 0.1f);
 
@@ -78,8 +90,8 @@ public class CardBehavior : MonoBehaviour
     }
 
     
-    public void SetDDisplay(float val) {
-        ddisplay = val; 
+    public void SetScale(float val) {
+        targetSize = val; 
     }
 
     public void SetTexture(string name)

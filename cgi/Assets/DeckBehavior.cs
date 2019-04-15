@@ -13,6 +13,8 @@ public class DeckBehavior : MonoBehaviour
     public ArrayList cardsInHand = new ArrayList(); // all cards in hand; 
     public List<string> cardsInDeck = new List<string>(); // all cards in deck; stores names of cards
 
+    float targetSize = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,9 @@ public class DeckBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RenderCardPosition(); 
+        RenderCardPosition();
+        RenderCardSize();
+
     }
 
 
@@ -95,10 +99,21 @@ public class DeckBehavior : MonoBehaviour
                 }
             }
             
-
-
         }
     }
+
+    public void RenderCardSize()
+    {
+        int n = cardsInHand.Count;
+
+        for (int i = 0; i < n; i++)
+        {
+            CardBehavior go = (CardBehavior)cardsInHand[i];
+            go.SetScale(targetSize);
+        }
+        
+    }
+
 
     public void HandToPinch(GameObject cc) {
         CardBehavior cb = cc.GetComponent<CardBehavior>();
@@ -146,6 +161,11 @@ public class DeckBehavior : MonoBehaviour
             Debug.Log(a);
         }
         */
+    }
+
+    public void SetTargetSize(float val) {
+        targetSize = val; 
+
     }
 
 }
