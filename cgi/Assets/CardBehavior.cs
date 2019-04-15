@@ -37,18 +37,11 @@ public class CardBehavior : MonoBehaviour
     void Update()
     {
         // smooth transition between open hand and close hand
-        displayed += ddisplay * Time.deltaTime;
+        //displayed += ddisplay * Time.deltaTime;
         if (inHand)
         {
             float diff = targetSize - displayed;
-            if (Mathf.Abs(diff) <= (ddisplay * Time.deltaTime))
-            {
-                displayed = targetSize;
-            }
-            else
-            {
-                displayed += (Mathf.Sign(diff) * ddisplay * Time.deltaTime);
-            }
+            displayed += (Mathf.Sign(diff) * ddisplay * Time.deltaTime);
 
 
             GetComponent<Rigidbody>().isKinematic = true;
@@ -64,7 +57,7 @@ public class CardBehavior : MonoBehaviour
         }
 
         displayed = Mathf.Max(0.0f, Mathf.Min(1.0f, displayed)); // range control
-
+        Debug.Log(displayed); 
 
         transform.localScale = new Vector3(displayed * 0.0654356f, displayed * 0.00033f, displayed * 0.1f);
 
