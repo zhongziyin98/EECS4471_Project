@@ -66,11 +66,12 @@ public class CardBehavior : MonoBehaviour
         if (pinched)
         {
             GetComponent<Renderer>().material.shader = hili;
-
+            gameObject.transform.GetChild(0).GetComponent<Renderer>().material.shader = hili;
         }
         else
         {
             GetComponent<Renderer>().material.shader = std;
+            gameObject.transform.GetChild(0).GetComponent<Renderer>().material.shader = std;
         }
         /*
         if (lastPos == Vector3.zero) {

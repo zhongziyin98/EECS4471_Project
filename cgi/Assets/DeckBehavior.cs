@@ -72,7 +72,7 @@ public class DeckBehavior : MonoBehaviour
         {
             CardBehavior go = (CardBehavior) cardsInHand[i];
 
-            float xOffset = -0.05f * (n-0.05f) + 0.1f*i; 
+            float xOffset = -0.05f * (n) + 0.1f*i +0.05f; 
 
             //Vector3 oldPos = go.gameObject.transform.position;
 
