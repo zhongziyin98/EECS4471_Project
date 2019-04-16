@@ -10,10 +10,9 @@ public class CardBehavior : MonoBehaviour
     public bool pinched = false; // is this card being pinched? 
 
     public float displayed, targetSize; // The scale of card; value between 0f and 1f; 
-    public float ddisplay = 4.0f;
 
     public static Vector3 DEFAULT_SIZE = new Vector3(0.0654356f, 0.00033f, 0.1f);
-
+    public Texture t; 
     Shader std, hili;
 
     //public Vector3 _speed, lastPos; 
@@ -33,6 +32,9 @@ public class CardBehavior : MonoBehaviour
 
         hili = Shader.Find("Objectify/Fresnel_Pulse");
         std = Shader.Find("Standard");
+        Renderer ren = GetComponent<Renderer>();
+        ren.material.EnableKeyword ("_NORMALMAP");
+        ren.material.EnableKeyword ("_METALLICGLOSSMAP");
     }
 
     // Update is called once per frame
@@ -65,15 +67,21 @@ public class CardBehavior : MonoBehaviour
 
 
         // card rel position in hand is written in DeckBehvior
-
+        Renderer ren = GetComponent<Renderer>();
         if (pinched)
         {
-            GetComponent<Renderer>().material.shader = hili;
-            gameObject.transform.GetChild(0).GetComponent<Renderer>().material.shader = hili;
+
+            ren.material.shader = hili;
+            ren.material.SetTexture("_Diffuse", t);
+
+            Renderer cren = gameObject.transform.GetChild(0).GetComponent<Renderer>(); 
+            cren.material.shader = hili;
+            Texture back = Resources.Load("cardface/cardback") as Texture;
+            cren.material.SetTexture("_Diffuse", back);
         }
         else
         {
-            GetComponent<Renderer>().material.shader = std;
+            ren.material.shader = std;
             gameObject.transform.GetChild(0).GetComponent<Renderer>().material.shader = std;
         }
         /*
@@ -93,12 +101,12 @@ public class CardBehavior : MonoBehaviour
     public void SetTexture(string name)
     {
         Renderer ren = gameObject.GetComponent<Renderer>();
-        Texture t = Resources.Load("cardface/" + name) as Texture;
-        ren.material.shader = hili; 
-        ren.material.EnableKeyword("Diffuse");
-        ren.material.SetTexture("Diffuse", t);
+        t = Resources.Load("cardface/" + name) as Texture;
+        ren.material.mainTexture = t;
+
+        ren.material.shader = std; 
+        //ren.material.SetTexture("_Diffuse", t);
         //ren.material.mainTexture = t;
-        Debug.Log("cardface/" + name);
     }
 
     public void SetRotation(Vector3 rot)
