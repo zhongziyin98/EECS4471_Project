@@ -94,7 +94,10 @@ public class CardBehavior : MonoBehaviour
     {
         Renderer ren = gameObject.GetComponent<Renderer>();
         Texture t = Resources.Load("cardface/" + name) as Texture;
-        ren.material.mainTexture = t;
+        ren.material.shader = hili; 
+        ren.material.EnableKeyword("Diffuse");
+        ren.material.SetTexture("Diffuse", t);
+        //ren.material.mainTexture = t;
         Debug.Log("cardface/" + name);
     }
 
