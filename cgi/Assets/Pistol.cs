@@ -49,17 +49,18 @@ public class Pistol : GestureBase
             {
                 var rot = detectHand.GetRotation();
 
-                
+                //Debug.DrawRay(detectHand.GetFinger(indexFinger).GetTipPosition(), detectHand.GetFinger(indexFinger).GetFingerDirection() * 3.0f, Color.white);
+                //Debug.DrawRay(DetectionManager.Get().GetHand(m_Hand).GetHandPosition(), detectionHand.GetHandAxis(m_HandAxis) * 1000, Color.red);
+
+
                 //Debug.Log(di);
 
-                if (rot.x > 0.35f && m_CoolDownLeft <= 0.0f )
+                if (rot.x > 0.25f && m_CoolDownLeft <= 0.0f )
                 {
                     m_CoolDownLeft = m_CooldownTime;
                     GameObject projectile = Instantiate(prefab) as GameObject;
                     var spawn = detectHand.GetFinger(indexFinger).GetTipPosition();
                    
-                    
-
                     projectile.transform.position = spawn ;
                     Rigidbody rb = projectile.GetComponent<Rigidbody>();
                     //var di = detectHand.GetFinger(indexFinger).GetFingerDirection();
@@ -67,7 +68,7 @@ public class Pistol : GestureBase
                    // di.z += 0.3f;
                     //di.x += 0.2f;
                     //rb.AddForce(Camera.main.transform.forward * 20f, ForceMode.VelocityChange);
-                    rb.velocity = Camera.main.transform.forward * 8;
+                    rb.velocity = Vector3.forward * 8;
                 }
 
                 
