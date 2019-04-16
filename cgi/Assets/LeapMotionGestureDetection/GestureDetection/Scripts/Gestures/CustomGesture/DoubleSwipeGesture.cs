@@ -13,11 +13,11 @@ public class DoubleSwipeGesture : GestureBase
     float m_CoolDownLeft = 0.0f;
 
     float timeGap = 1f;
-    float gapLeft = 0.0f;
+    float timeLeft = 0.0f;
     
     bool swipeLeft = false;
-    bool gapp = false;
-    float timecount = 0.0f;
+    bool gapLeft = false;
+    float ctr = 0.0f;
 
     void Start()
     {
@@ -35,29 +35,25 @@ public class DoubleSwipeGesture : GestureBase
             }
         }
 
-        if (gapLeft > 0.0f)
+        if (timeLeft > 0.0f)
         {
-           gapLeft -= Time.deltaTime;
-            if (gapLeft < 0.0f)
+           timeLeft -= Time.deltaTime;
+            if (timeLeft < 0.0f)
             {
-                gapLeft = 0.0f;
+                timeLeft = 0.0f;
             }
         }
 
-        if (gapp == true)
+        if (gapLeft == true)
         {
-            timecount += Time.deltaTime;
-            if (timecount > 2.0f)
+            ctr += Time.deltaTime;
+            if (ctr > 2.0f)
             {
-                gapp = false;
-                timecount = 0.0f;
-
-
+                gapLeft = false;
+                ctr = 0.0f;
             }
-
         }
-
-     //   Debug.Log(gapLeft);
+     //   Debug.Log(timeLeft);
     }
 
     bool IsSwiping(ref EDirection a_swipeDirection)
@@ -83,7 +79,7 @@ public class DoubleSwipeGesture : GestureBase
             a_swipeDirection = EDirection.eUpwards;
             return true;
         }
-        else if (velocity.y <= -m_VelocityThreshold)//down
+        else if (velocity.y <= -m_VelocityThreshold) //down
         {
             a_swipeDirection = EDirection.eDownwards;
             return true;
@@ -93,14 +89,12 @@ public class DoubleSwipeGesture : GestureBase
             a_swipeDirection = EDirection.eOutwards;
             return true;
         }
-        else if (velocity.z <= -m_VelocityThreshold)//back
+        else if (velocity.z <= -m_VelocityThreshold) //back
         {
             a_swipeDirection = EDirection.eInWards;
             return true;
         }
-
         return false;
-
     }
 
     public override bool Detected()
@@ -115,17 +109,17 @@ public class DoubleSwipeGesture : GestureBase
                 if (swipeDir == EDirection.eLeft)
                 {
                     swipeLeft = true;
-                    if (gapp == false)
-                    {
-                        gapLeft = timeGap;
-                        gapp = true;
 
-                    }
-                    
+                    if (gapLeft == false)
+                    {
+                        timeLeft = timeGap;
+                        gapLeft = true;
+                    }            
                 }
-                if (swipeLeft && gapLeft > 0.1f && gapLeft < 0.5f )
+                if (swipeLeft && timeLeft > 0.1f && timeLeft < 0.5f )
                 {
-                    gapp = false;
+                    gapLeft = false;
+
                     if (swipeDir == EDirection.eRight)
                     {
                         swipeLeft = false;
@@ -135,7 +129,6 @@ public class DoubleSwipeGesture : GestureBase
                 }
             }
         }
-
         return false;
     }
 }

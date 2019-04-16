@@ -15,7 +15,11 @@ public class Pistol : GestureBase
     float stayTime = 3f;
     float stayLeft = 0.0f;
 
-    bool gunbegin = false;
+    bool gunBegin = false;
+
+    bool timeBegin = false;
+    float timeElapsed = 0.0f;
+    float timeReset = 0.0f;
 
     GameObject prefab;
 
@@ -41,14 +45,16 @@ public class Pistol : GestureBase
             }
         }
 
-        if (stayLeft > 0.0f)
+        if (timeBegin)
         {
-            stayLeft -= Time.deltaTime;
-            if (stayLeft < 0.0f)
+            timeElapsed += Time.deltaTime;
+            if (timeElapsed >= 3.0f)
             {
-                stayLeft = 0.0f;
+                timeElapsed = timeReset;
+                timeBegin = false;
             }
         }
+        //Debug.Log(timeElapsed);
     }
 
     public override bool Detected()
@@ -63,20 +69,19 @@ public class Pistol : GestureBase
             {
                 var rot = detectHand.GetRotation();
 
-                if (gunbegin == false)
+               if (timeBegin == false)
                 {
-                    stayLeft = stayTime;
-                    gunbegin = true;
-
+                    timeBegin = true;
                 }
 
                 //Debug.DrawRay(detectHand.GetFinger(indexFinger).GetTipPosition(), detectHand.GetFinger(indexFinger).GetFingerDirection() * 3.0f, Color.white);
                 //Debug.DrawRay(DetectionManager.Get().GetHand(m_Hand).GetHandPosition(), detectionHand.GetHandAxis(m_HandAxis) * 1000, Color.red);
 
 
-                //Debug.Log(di);
+                //Debug.Log(stayTime);
 
-                if (rot.x > 0.25f && m_CoolDownLeft <= 0.0f)
+
+                if (rot.x > 0.25f && m_CoolDownLeft <= 0.0f && stayTime == 0.0f)
                 {
                     m_CoolDownLeft = m_CooldownTime;
                     GameObject projectile = Instantiate(prefab) as GameObject;
@@ -95,8 +100,7 @@ public class Pistol : GestureBase
 
                 return true;
             }
-            else
-                gunbegin = false;
+            
         }
 
         return false;

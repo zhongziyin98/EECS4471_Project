@@ -104,12 +104,14 @@ public class DeckBehavior : MonoBehaviour
 
                     go.gameObject.transform.position = oldPos * 0.76f + hp * 0.24f;
 
-                    go.gameObject.transform.eulerAngles = new Vector3(-90, 0, 0);
+                    //go.gameObject.transform.eulerAngles = new Vector3(-90, 0, 0);
 
                     if (bmOn)
                     {
                         //spinning
                         go.transform.Rotate(0, 4, 0, Space.World);
+
+                        Debug.Log("R");
                         if (!rhombus)
                         {
 
@@ -135,7 +137,7 @@ public class DeckBehavior : MonoBehaviour
                         go.gameObject.transform.eulerAngles = new Vector3(-90, 0, 0);
                         Destroy(GameObject.Find("magic_purple(Clone)"));
                     }
-
+                
                 }
             }
 
