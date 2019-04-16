@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Leap;
@@ -11,6 +11,8 @@ public class CardBehavior : MonoBehaviour
 
     public float displayed, targetSize; // The scale of card; value between 0f and 1f; 
     public float ddisplay = 4.0f;
+
+    public static Vector3 DEFAULT_SIZE = new Vector3(0.0654356f, 0.00033f, 0.1f);
 
     Shader std, hili;
 
@@ -40,8 +42,9 @@ public class CardBehavior : MonoBehaviour
         //displayed += ddisplay * Time.deltaTime;
         if (inHand)
         {
-            float diff = targetSize - displayed;
-            displayed += (Mathf.Sign(diff) * ddisplay * Time.deltaTime);
+            //float diff = targetSize - displayed;
+            //displayed += (Mathf.Sign(diff) * ddisplay * Time.deltaTime);
+            displayed = displayed * 0.8f + targetSize * 0.2f; 
 
 
             GetComponent<Rigidbody>().isKinematic = true;
@@ -58,7 +61,7 @@ public class CardBehavior : MonoBehaviour
 
         displayed = Mathf.Max(0.0f, Mathf.Min(1.0f, displayed)); // range control
 
-        transform.localScale = new Vector3(displayed * 0.0654356f, displayed * 0.00033f, displayed * 0.1f);
+        transform.localScale = DEFAULT_SIZE * displayed;  //new Vector3(displayed * 0.0654356f, displayed * 0.00033f, displayed * 0.1f);
 
 
         // card rel position in hand is written in DeckBehvior
