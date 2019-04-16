@@ -15,6 +15,13 @@ public class DeckBehavior : MonoBehaviour
 
     float targetSize = 1.0f;
 
+    public bool bmOn = false;
+
+    GameObject prefab;
+
+    bool rhombus = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +30,8 @@ public class DeckBehavior : MonoBehaviour
         InitiateDeck();
 
         DrawCard();
+
+        prefab = Resources.Load("magic_purple") as GameObject;
     }
 
     // Update is called once per frame
@@ -37,16 +46,17 @@ public class DeckBehavior : MonoBehaviour
     public void DrawCard()
     {
         int n = cardsInDeck.Count;
-        if (n <= 0) {
-            return; 
+        if (n <= 0)
+        {
+            return;
         }
         // generate a card at deck positoin
         Vector3 pos = new Vector3(0.3f, 0.11f, -2.9f);
         CardBehavior go = Instantiate(card, pos, Quaternion.identity);
-        string s = cardsInDeck[n-1]; // get and remove a card
-        cardsInDeck.RemoveAt(n - 1); 
+        string s = cardsInDeck[n - 1]; // get and remove a card
+        cardsInDeck.RemoveAt(n - 1);
         go.SetTexture(s);
-        
+
         cardsInHand.Add(go);
 
         go.inHand = true;
@@ -70,13 +80,13 @@ public class DeckBehavior : MonoBehaviour
 
         for (int i = 0; i < n; i++)
         {
-            CardBehavior go = (CardBehavior) cardsInHand[i];
+            CardBehavior go = (CardBehavior)cardsInHand[i];
 
-            float xOffset = -0.05f * (n) + 0.1f*i +0.05f; 
+            float xOffset = -0.05f * (n) + 0.1f * i + 0.05f;
 
             //Vector3 oldPos = go.gameObject.transform.position;
 
-            Hand h; 
+            Hand h;
             //Hand h = go.attachedTo;
             Frame frame = provider.CurrentFrame;
 
@@ -90,15 +100,45 @@ public class DeckBehavior : MonoBehaviour
                     h = hand;
                     Vector3 hp = h.PalmPosition.ToVector3();
                     hp.y += 0.1f;
-                    hp.x += xOffset; 
+                    hp.x += xOffset;
 
                     go.gameObject.transform.position = oldPos * 0.76f + hp * 0.24f;
 
-                    //go.gameObject.transform.eulerAngles = new Vector3(-90, 0, 0);
+                    go.gameObject.transform.eulerAngles = new Vector3(-90, 0, 0);
+
+                    if (bmOn)
+                    {
+                        //spinning
+                        go.transform.Rotate(0, 4, 0, Space.World);
+                        if (!rhombus)
+                        {
+
+
+                            go.transform.Rotate(0, 40, 0);
+                            GameObject projectile = Instantiate(prefab) as GameObject;
+
+                            var hp1 = h.PalmPosition.ToVector3();
+
+                            hp1.z += 1;
+                            hp1.y += 0.3f;
+
+                            projectile.transform.position = hp1;
+
+                            rhombus = true;
+                        }
+
+
+
+                    }
+                    else if (!bmOn)
+                    {
+                        go.gameObject.transform.eulerAngles = new Vector3(-90, 0, 0);
+                        Destroy(GameObject.Find("magic_purple(Clone)"));
+                    }
 
                 }
             }
-            
+
         }
     }
 
@@ -111,11 +151,12 @@ public class DeckBehavior : MonoBehaviour
             CardBehavior go = (CardBehavior)cardsInHand[i];
             go.SetScale(targetSize);
         }
-        
+
     }
 
 
-    public void HandToPinch(GameObject cc) {
+    public void HandToPinch(GameObject cc)
+    {
         CardBehavior cb = cc.GetComponent<CardBehavior>();
         cb.inHand = false;
         cb.pinched = true;
@@ -163,8 +204,23 @@ public class DeckBehavior : MonoBehaviour
         */
     }
 
-    public void SetTargetSize(float val) {
-        targetSize = val; 
+    public void SetTargetSize(float val)
+    {
+        targetSize = val;
+
+    }
+
+
+    public void blackMagic(bool magic)
+    {
+        bmOn = magic;
+
+        if (magic == false)
+        {
+            rhombus = false;
+
+
+        }
 
     }
 
