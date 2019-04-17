@@ -7,8 +7,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ViewMenu : MonoBehaviour
+public class HandPanelBehavior : MonoBehaviour
 {
+    
+    public static Vector3 DEFAULT_SIZE = new Vector3(0.6f, 0.6f, 0.6f);
+
+    public float size = 1.0f; 
+    public float targetSize = 1.0f; 
+
     LeapProvider provider;
     Vector3 vector;
 
@@ -21,6 +27,7 @@ public class ViewMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //position
         Frame frame = provider.CurrentFrame;
 
         foreach (Hand hand in frame.Hands)
@@ -33,5 +40,13 @@ public class ViewMenu : MonoBehaviour
                 //Debug.Log(vector.ToString());
             }
         }
+
+        //size
+        size = size * 0.8f + targetSize * 0.2f; 
+        transform.localScale = DEFAULT_SIZE * size; 
+    }
+
+    public void SetSize(float val){
+        targetSize = val; 
     }
 }
