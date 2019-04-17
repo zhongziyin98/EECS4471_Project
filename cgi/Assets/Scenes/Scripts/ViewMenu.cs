@@ -28,8 +28,7 @@ public class ViewMenu : MonoBehaviour
             if (hand.IsLeft)
             {
                 vector = hand.PalmPosition.ToVector3();
-                vector.y += 0.1f;
-                vector.z += 0.2f;
+                vector.x += 0.2f;
                 transform.position = vector;
                 //Debug.Log(vector.ToString());
             }

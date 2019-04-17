@@ -15,6 +15,8 @@ public class DeckBehavior : MonoBehaviour
 
     float targetSize = 1.0f;
 
+    float cardInterval = 0.1f; 
+
     public bool bmOn = false;
 
     GameObject prefab;
@@ -82,7 +84,8 @@ public class DeckBehavior : MonoBehaviour
         {
             CardBehavior go = (CardBehavior)cardsInHand[i];
 
-            float xOffset = -0.05f * (n) + 0.1f * i + 0.05f;
+            float xOffset = -cardInterval * 0.5f * (n-1) + cardInterval * i;
+            float zOffset = -0.0005f * i;
 
             //Vector3 oldPos = go.gameObject.transform.position;
 
@@ -101,6 +104,7 @@ public class DeckBehavior : MonoBehaviour
                     Vector3 hp = h.PalmPosition.ToVector3();
                     hp.y += 0.1f;
                     hp.x += xOffset;
+                    hp.z += zOffset;
 
                     go.gameObject.transform.position = oldPos * 0.76f + hp * 0.24f;
 
@@ -154,6 +158,10 @@ public class DeckBehavior : MonoBehaviour
             go.SetScale(targetSize);
         }
 
+    }
+
+    public void SetCardInterval(float val){
+        cardInterval = val; 
     }
 
 
