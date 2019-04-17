@@ -114,8 +114,8 @@ public class DeckBehavior : MonoBehaviour
                     {
                         //spinning
                         go.transform.Rotate(0, 4, 0, Space.World);
+                       
 
-                        Debug.Log("R");
                         if (!rhombus)
                         {
 
