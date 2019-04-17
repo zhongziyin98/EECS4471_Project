@@ -178,7 +178,7 @@ public class DeckBehavior : MonoBehaviour
 
     public void InitiateDeck()
     {
-
+        cardsInDeck.Clear();
         for (int i = 1; i <= 13; i++)
         {
             cardsInDeck.Add(i + "C");
