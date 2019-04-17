@@ -9,6 +9,7 @@ public class ChipBehavior : MonoBehaviour
     bool grab = false;
     public GameObject handObject;
     Vector3 vector;
+    public Rigidbody rb;
 
     Shader std, hili;
 
@@ -17,6 +18,8 @@ public class ChipBehavior : MonoBehaviour
     {
         hili = Shader.Find("Objectify/Fresnel_Pulse");
         std = Shader.Find("Standard");
+        rb = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -71,12 +74,15 @@ public class ChipBehavior : MonoBehaviour
             //transform.position = vector;
 
             grab = false;
-            held = true; 
+            held = true;
+            rb.isKinematic = true;
+
         }
     }
 
     public void GrabinEnd()
     {
+        rb.isKinematic = false;
 
         transform.parent = null;
         held = false; 

@@ -48,12 +48,12 @@ public class Pistol : GestureBase
         if (timeBegin)
         {
             timeElapsed += Time.deltaTime;
-            if (timeElapsed >= 3.0f)
-            {
-                timeElapsed = timeReset;
+            if (timeElapsed > 10f)
                 timeBegin = false;
-            }
+
         }
+        else
+            timeElapsed = timeReset;
         //Debug.Log(timeElapsed);
     }
 
@@ -61,7 +61,7 @@ public class Pistol : GestureBase
     {
         DetectionManager.DetectionHand detectHand = DetectionManager.Get().GetHand(m_Hand);
 
-        EFinger indexFinger = EFinger.eThumb+1;
+        EFinger indexFinger = EFinger.eThumb + 1;
 
         if (detectHand.IsSet())
         {
@@ -69,8 +69,9 @@ public class Pistol : GestureBase
             {
                 var rot = detectHand.GetRotation();
 
-               if (timeBegin == false)
+                if (timeBegin == false)
                 {
+                    timeElapsed = timeReset;
                     timeBegin = true;
                 }
 
@@ -81,7 +82,7 @@ public class Pistol : GestureBase
                 //Debug.Log(stayTime);
 
 
-                if (rot.x > 0.25f && m_CoolDownLeft <= 0.0f && stayTime == 0.0f)
+                if (rot.x > 0.25f && m_CoolDownLeft <= 0.0f && timeElapsed >= 3.5f && timeElapsed <= 8.0f && timeBegin)
                 {
                     m_CoolDownLeft = m_CooldownTime;
                     GameObject projectile = Instantiate(prefab) as GameObject;
@@ -95,12 +96,14 @@ public class Pistol : GestureBase
                     //di.x += 0.2f;
                     //rb.AddForce(Camera.main.transform.forward * 20f, ForceMode.VelocityChange);
                     rb.velocity = Vector3.forward * 8;
+                    timeBegin = false;
                 }
 
 
                 return true;
             }
             
+
         }
 
         return false;
