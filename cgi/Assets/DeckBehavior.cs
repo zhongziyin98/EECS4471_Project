@@ -13,6 +13,8 @@ public class DeckBehavior : MonoBehaviour
     public ArrayList cardsInHand = new ArrayList(); // all cards in hand; 
     public List<string> cardsInDeck = new List<string>(); // all cards in deck; stores names of cards
 
+
+    bool enableSetSize = false; 
     float targetSize = 1.0f;
 
     float cardInterval = 0.1f; 
@@ -216,8 +218,17 @@ public class DeckBehavior : MonoBehaviour
 
     public void SetTargetSize(float val)
     {
-        targetSize = val;
+        if (enableSetSize){
+            targetSize = val;
+        }else{
+            targetSize = 0.0f; 
+        }
+        
 
+    }
+
+    public void FistOff(bool val){
+        enableSetSize = val; 
     }
 
 

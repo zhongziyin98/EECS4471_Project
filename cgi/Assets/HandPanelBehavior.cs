@@ -14,6 +14,7 @@ public class HandPanelBehavior : MonoBehaviour
 
     public float size = 1.0f; 
     public float targetSize = 1.0f; 
+    public bool enableSetSize = false; 
 
     LeapProvider provider;
     Vector3 vector;
@@ -46,7 +47,20 @@ public class HandPanelBehavior : MonoBehaviour
         transform.localScale = DEFAULT_SIZE * size; 
     }
 
+
+    public void HandUp(bool val){
+        enableSetSize = val; 
+    }
+
+
+
     public void SetSize(float val){
-        targetSize = val; 
+        if (enableSetSize) {
+            targetSize = val;
+        } 
+        else
+        {
+            targetSize = 0.0f; 
+        }
     }
 }
