@@ -7704,7 +7704,7 @@ GameObject:
   - component: {fileID: 1859650896}
   - component: {fileID: 1859650895}
   m_Layer: 0
-  m_Name: Hand Panel
+  m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
