@@ -14,7 +14,7 @@ public class CardBehavior : MonoBehaviour
     public static Vector3 DEFAULT_SIZE = new Vector3(0.0654356f, 0.00033f, 0.1f);
     public Texture t; 
     Shader std, hili;
-
+    public bool r = false;
     //public Vector3 _speed, lastPos; 
 
     LeapProvider provider;

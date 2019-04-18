@@ -117,12 +117,16 @@ public class DeckBehavior : MonoBehaviour
                         //spinning
                         go.transform.Rotate(0, 4, 0, Space.World);
                        
+                       if(go.r==false){
+                            go.transform.Rotate(0, 40, 0);
+                            go.r=true;
+                       }
 
                         if (!rhombus)
                         {
 
 
-                            go.transform.Rotate(0, 40, 0);
+                            //go.transform.Rotate(0, 40, 0);
                             
                             GameObject projectile = Instantiate(prefab) as GameObject;
 
@@ -142,6 +146,7 @@ public class DeckBehavior : MonoBehaviour
                     {
                         go.gameObject.transform.eulerAngles = new Vector3(-90, 0, 0);
                         Destroy(GameObject.Find("magic_purple(Clone)"));
+                        go.r = false;
                     }
                 
                 }
