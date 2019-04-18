@@ -123,6 +123,7 @@ public class DeckBehavior : MonoBehaviour
 
 
                             go.transform.Rotate(0, 40, 0);
+                            
                             GameObject projectile = Instantiate(prefab) as GameObject;
 
                             var hp1 = h.PalmPosition.ToVector3();
@@ -132,11 +133,10 @@ public class DeckBehavior : MonoBehaviour
 
                             projectile.transform.position = hp1;
 
+
                             rhombus = true;
+
                         }
-
-
-
                     }
                     else if (!bmOn)
                     {
@@ -148,6 +148,7 @@ public class DeckBehavior : MonoBehaviour
             }
 
         }
+        
     }
 
     public void RenderCardSize()
@@ -239,8 +240,6 @@ public class DeckBehavior : MonoBehaviour
         if (magic == false)
         {
             rhombus = false;
-
-
         }
 
     }

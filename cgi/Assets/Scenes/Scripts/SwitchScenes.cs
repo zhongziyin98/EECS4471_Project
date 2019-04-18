@@ -7,7 +7,7 @@ public class SwitchScenes : MonoBehaviour
 {
     public void SwitchToGame()
     {
-        SceneManager.LoadScene("CardGameInterface");
+        SceneManager.LoadScene("CardGameInterface", LoadSceneMode.Single);
     }
 
     // Start is called before the first frame update
